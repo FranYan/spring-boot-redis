@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 @Transactional
@@ -22,5 +23,10 @@ public class UserServiceImpl implements UserService {
         User user = userDao.selectById(id);
 
         return user;
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return userDao.getAll();
     }
 }
