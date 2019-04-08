@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/user")
@@ -26,10 +26,8 @@ public class UserController {
     public ResultBean getUserById(@PathVariable Long id) {
 
         User user = userService.getUser(id);
+        redisUtil.set(user.getUsername(),"1");
 
-        for (int i = 0; i < 100; i++) {
-            redisUtil.set(user.getUsername() + i, user);
-        }
         return new ResultBean("success", user);
     }
 

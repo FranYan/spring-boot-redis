@@ -51,5 +51,10 @@ public final class RedisUtil {
         }
     }
 
+    public static RedisUtil getInstance(){
+
+        return new RedisUtil();
+    }
+
 
 }
